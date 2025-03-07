@@ -1,0 +1,10 @@
+{
+  "name": "video-filter-app",
+  "version-string": "1.0.0",
+  "dependencies": [
+    {
+      "name": "opencv4",
+      "features": ["dnn", "ffmpeg"]
+    }
+  ]
+}

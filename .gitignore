@@ -1,0 +1,20 @@
+# Build directories
+cmake-build-*/
+
+# vcpkg directory
+vcpkg/
+
+# Visual Studio files
+.vs/
+*.sln
+*.vcxproj
+*.user
+
+# CLion files
+.idea/
+
+# Compiled files
+*.exe
+*.dll
+*.so
+*.dylib
