@@ -3,6 +3,7 @@ cmake-build-*/
 
 # vcpkg directory
 vcpkg/
+vcpkg_installed/
 
 # Visual Studio files
 .vs/
