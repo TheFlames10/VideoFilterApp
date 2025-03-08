@@ -5,6 +5,7 @@
 #include <memory>
 #include <functional>
 #include "../VideoProcessor.h"
+#include "../utils/FileDialog.h"
 
 /**
  * @brief Simple OpenCV-based user interface for the video processor

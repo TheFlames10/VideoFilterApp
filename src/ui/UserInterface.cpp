@@ -46,11 +46,8 @@ int UserInterface::run() {
 }
 
 void UserInterface::onOpenFile() {
-    // In a real application, we would show a file dialog
-    // For simplicity, we'll use a hardcoded path
-    std::string filename = "sample_video.mp4";
-    std::cout << "Enter video path: ";
-    std::getline(std::cin, filename);
+    // Use FileDialog to open a file explorer window
+    std::string filename = FileDialog::openFile("Open Video File", "", {"*.mp4", "*.avi", "*.mkv"});
     
     if (processor->openVideo(filename)) {
         processor->startProcessing();
@@ -80,15 +77,15 @@ void UserInterface::onAddFilter(int filterIndex) {
 }
 
 void UserInterface::onSaveVideo() {
-    // In a real application, we would show a save dialog
-    // For simplicity, we'll use a hardcoded path
-    std::string filename = "output_video.mp4";
-    std::cout << "Enter output path: ";
-    std::getline(std::cin, filename);
-    
-    int fourcc = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
-    if (processor->setOutputFile(filename, fourcc, 30.0)) {
-        std::cout << "Output video will be saved to: " << filename << std::endl;
+    // Use FileDialog to open a save file dialog
+    std::string filename = FileDialog::saveFile("Save Processed Video", "output.mp4", {"*.mp4"});
+
+    // If the user didn't cancel the dialog
+    if (!filename.empty()) {
+        int fourcc = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
+        if (processor->setOutputFile(filename, fourcc, 30.0)) {
+            std::cout << "Output video will be saved to: " << filename << std::endl;
+        }
     }
 }
 

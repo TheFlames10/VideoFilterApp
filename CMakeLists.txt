@@ -33,6 +33,11 @@ file(GLOB_RECURSE SOURCES
 # Create executable
 add_executable(${PROJECT_NAME} ${SOURCES})
 
+# Add platform-specific libraries for file dialogs
+if(WIN32)
+    target_link_libraries(${PROJECT_NAME} PRIVATE comdlg32 ole32)
+endif()
+
 # Link libraries - using more explicit linking
 target_link_libraries(${PROJECT_NAME} PRIVATE
         ${OpenCV_LIBS}
